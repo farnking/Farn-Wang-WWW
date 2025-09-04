@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
+    <title>HW2: Dataflow Framework</title>
+</head>
+
+<body style="margin-left: 120px; margin-right: 120px;">
+<h1>Programming Assignment 1: Dataflow Framework</h1>
+
+<h4>Due: Friday, February 3, 5:00 PM</h4>
+
+<h2>Assignment Description</h2>
+
+<p>Your assignment is to implement a basic dataflow
+framework for the <code>joeq</code> system.  We will provide the interfaces that
+your framework must support.  You will write the iterative algorithm
+for any analysis matching these interfaces, and also phrase Reaching
+Definitions in terms that any implementation of the solver can
+understand.</p>
+
+<ul>
+<li>The skeleton and sample analysis are available in
+<code>/usr/class/cs243/dataflow</code>.  
+
+<!--Inside is a <code>copy_assignment.sh</code> 
+script which allows you to automatically symlink the assignment files 
+in a target directory, for instance:</p>
+<pre>
+    /usr/class/cs243/dataflow/copy_assignment.sh .
+</pre>
+<p>
+will creates links to the assignment files in the current directory. -->
+<li>You can also download thea <a href="dataflow.tar.gz">assignment files</a>
+and the <a href="joeq.jar">joeq framework</a>. If you use Eclipse for development,
+you can download an <a href="dataflow-eclipse.zip">Eclipse project</a> that you can 
+simply import into your existing Eclipse Workspace.
+<li>The file
+<code>Flow.java</code> contains the interfaces and the main
+program.  The file <code>ConstantProp.java</code> contains classes
+that define a limited constant propagation algorithm.</p>
+</ul>
+
+<p>Your task is twofold:</p>
+
+<ul>
+
+  <li>Create a class <code>MySolver</code> that implements
+      <code>Flow.Solver</code>.  Use it to run the constant
+      propagation algorithm we provide.</li>
+
+  <li>Create a class <code>ReachingDefs</code> that implements
+      <code>Flow.Analysis</code> and solves the reaching
+      definitions problem.</li>
+
+</ul>
+
+<p>You may define any other classes you need to solve this problem.
+However, <em>do not modify</em> either <code>Flow.java</code> or
+<code>ConstantProp.java</code>.  We will be using our own copies for
+grading purposes.</p>
+
+<h2>Running Your Code</h2>
+
+<p><code>Flow</code> is runnable, and takes three (or more)
+arguments.  The first argument is the name of the class that holds the
+analysis you want to run.  The second is the name of the solver to
+use.  All others are the names of classes to analyze.  So, to run
+constant propagation on <code>test.class</code>, enter the
+command:</p>
+
+<pre>
+    java Flow MySolver ConstantProp test
+</pre>
+
+<p>And it should do the right thing.</p>
+
+<p> A <code>Makefile</code> is included to help you compile and run your code.
+To compile you solver, enter the command:</p>
+<pre>
+    make solver
+</pre>
+<p>
+To compile your reaching definitions analysis, enter the command:</p>
+
+<pre>
+    make reachingdefs
+</pre>
+
+<h2>Testing Your Code</h2>
+
+<p>We have provided a very simple program, called
+<code>test.java</code>, in the code directory.  The file
+<code>test.txt</code> produces output that should match your output
+when you run your Solver with it. We also provide the <code>test.class</code>
+ to ensure everyone has the same, so you shouldn't compile it yourself.</p>
+
+<p>Here again, the <code>Makefile</code> is here to help you. To test constant propagation, just type </p>
+<pre>
+    make test_constantprop
+</pre>
+<p> And to test reaching definition:</p>
+<pre>
+    make test_reachingdefs
+</pre>
+<p>To test both:</p>
+<pre>
+    make test
+</pre>
+
+<h2>Turning it in</h2>
+
+<p>A <code>submit.sh</code> script is available in the usr/class/cs243/dataflow/submit.sh. Follow these steps:
+
+<ol>
+<li>Name your solution <code>MySolver.java</code> and <code>ReachingDefs.java</code>.
+<li>Run the script from the directory containing these 2 files.
+<li>If you are working with a partner, then only one of you needs to submit
+the assignment and put your partner Sunet ID as an argument to the submit script.
+For example : <pre>    /usr/class/cs243/dataflow/submit.sh foo</pre> 
+where <code>foo</code> is the Sunet ID of your partner.
+</ol>
+
+<h2>Hints</h2>
+
+<ul>
+
+  <li><b><i>GET STARTED EARLY.</i></b> This is a sizable project, and
+      you need to familiarize yourself with joeq at the same time.  If
+      you wait until the last minute, you will not be able to finish.</li>
+
+  <li>Look at the <code>ConstantProp</code> classes.  You will find
+      techniques that will be useful to you when you formulate
+      <code>ReachingDefs</code>.</li>
+
+  <li>Read the <a href="../../joeq/">joeq documentation</a> carefully,
+      and don't hesitate to look at <a
+      href="http://joeq.sourceforge.net/apidocs/index.html">the full
+      javadocs</a> if you get stuck.  <code>joeq</code> is still an
+      experimental system; if you wish to attempt something
+      particularly tricky, you may find it enlightening to sourcedive.</li>
+
+  <li>Study the <code>QuadIterator</code> interface carefully.  It
+      does a great deal of the work for you.</li>
+
+ </ul>
+
+</body>
+</html>
