@@ -1,0 +1,9 @@
+SUT:
+Line2dSolver.h, a software solving problem of a system of 2 linear equations using Cramer¡¦s rule.
+
+System Requirements:
+
+Given two linear equations, as the matrix form.
+Solve the equations using Cramer¡¦s rule.
+Solution could be unique infinitely many and not existed.
+

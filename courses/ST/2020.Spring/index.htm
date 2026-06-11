@@ -1,0 +1,930 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml">
+
+<head>
+<meta http-equiv="Content-Language" content="zh-tw">
+<meta http-equiv="Content-Type" content="text/html; charset=big5">
+
+<link rel="File-List" href="index.files/filelist.xml">
+
+
+<title>Farn's Software Testing Class</title>
+<!--[if !mso]>
+<style>
+v\:*         { behavior: url(#default#VML) }
+o\:*         { behavior: url(#default#VML) }
+.shape       { behavior: url(#default#VML) }
+</style>
+<![endif]--><!--[if gte mso 9]>
+<xml><o:shapedefaults v:ext="edit" spidmax="1027"/>
+</xml><![endif]-->
+</head>
+
+<body>
+
+<p class="MsoNormal" align="center" style="text-align: left">
+<font style="font-size: 48pt" color="#0000FF">
+<b><span style="font-family: Britannic Bold">Software Testing &amp; Security 
+Checking</span></b></font></p>
+<p class="MsoNormal" align="center" style="text-align: left">
+<!--[if gte vml 1]><v:shapetype id="_x0000_t183"
+ coordsize="21600,21600" o:spt="183" adj="5400" path="m21600,10800l@15@14@15@18xem18436,3163l@17@12@16@13xem10800,l@14@10@18@10xem3163,3163l@12@13@13@12xem,10800l@10@18@10@14xem3163,18436l@13@16@12@17xem10800,21600l@18@15@14@15xem18436,18436l@16@17@17@16xem10800@19qx@19,10800,10800@20@20,10800,10800@19xe">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="sum 10800 0 #0"/>
+  <v:f eqn="prod @0 30274 32768"/>
+  <v:f eqn="prod @0 12540 32768"/>
+  <v:f eqn="sum @1 10800 0"/>
+  <v:f eqn="sum @2 10800 0"/>
+  <v:f eqn="sum 10800 0 @1"/>
+  <v:f eqn="sum 10800 0 @2"/>
+  <v:f eqn="prod @0 23170 32768"/>
+  <v:f eqn="sum @7 10800 0"/>
+  <v:f eqn="sum 10800 0 @7"/>
+  <v:f eqn="prod @5 3 4"/>
+  <v:f eqn="prod @6 3 4"/>
+  <v:f eqn="sum @10 791 0"/>
+  <v:f eqn="sum @11 791 0"/>
+  <v:f eqn="sum @11 2700 0"/>
+  <v:f eqn="sum 21600 0 @10"/>
+  <v:f eqn="sum 21600 0 @12"/>
+  <v:f eqn="sum 21600 0 @13"/>
+  <v:f eqn="sum 21600 0 @14"/>
+  <v:f eqn="val #0"/>
+  <v:f eqn="sum 21600 0 #0"/>
+ </v:formulas>
+ <v:path o:connecttype="rect" textboxrect="@9,@9,@8,@8"/>
+ <v:handles>
+  <v:h position="#0,center" xrange="2700,10125"/>
+ </v:handles>
+</v:shapetype><v:shape id="_x0000_s1025" type="#_x0000_t183" style='position:absolute;
+ left:417.75pt;top:66pt;width:290.25pt;height:84pt;z-index:1' adj="3233"
+ fillcolor="yellow" strokecolor="purple" strokeweight="6pt">
+ <v:textbox>
+<table cellspacing="0" cellpadding="0" width="100%" height="100%">
+	<tr>
+		<td align="center"><font color="#FF0000" size="6"><b>
+		<span style="font-family: Engravers MT; font-style: italic">online
+		</span></b></font></td>
+	</tr>
+</table>
+ </v:textbox>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:1;left:534px;top:79px;width:437px;height:134px'><img
+width=437 height=134 src="index.files/image001.gif" alt="太陽: online &#13;&#10;"
+v:shapes="_x0000_s1025"></span><![endif]></p>
+<p class="MsoNormal" align="center" style="text-align: left"><font size="7">
+<b><span style="font-family: Britannic Bold">EE 5191</span></b></font></p>
+<p class="MsoNormal" align="center" style="text-align: center">　</p>
+<p class="MsoNormal"><font size="6" face="Calibri"><b><font color="#0000FF">
+Professor:</font></b> Farn Wang </font><b><span style="font-family: 標楷體">
+<font size="6">（</font></span></b><span style="font-family: 標楷體"><font size="6">王凡教授）</font></span></p>
+<blockquote>
+	<p class="MsoNormal"><font size="6"><span style="font-family: Calibri">
+	<a href="mailto:farn@cc.ee.ntu.edu.tw">farn＠ntu.edu.tw</a></span></font></p>
+	<p class="MsoNormal"><font size="6"><span style="font-family: Calibri">
+	<a href="http://cc.ee.ntu.edu.tw/~farn">http://cc.ee.ntu.edu.tw/~farn</a></span></font></p>
+	<p class="MsoNormal"><font size="6"><span style="font-family: Calibri">
+	Office: BL 616</span></font></p>
+	<p class="MsoNormal"><font size="6"><span style="font-family: Calibri">
+	Phone: +886-2-33663602</span></font></p>
+</blockquote>
+<p class="MsoNormal"><span style="font-family: Calibri"><font size="6">
+<font color="#0000FF"><b>Semester: </b></font>Spring 2020&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF"><b>Time: </b></font>Every 
+Wednesday, 9:10am-12:00noon. </font></span></p>
+<p class="MsoNormal"><font size="6"><span style="font-family: Calibri"><b>
+<font color="#0000FF">Classroom: </font></b>BL 103&nbsp;&nbsp;&nbsp;</span></font><font size="6"><span style="font-family: Calibri">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+<font face="Calibri">
+<b><font color="#0000FF">Credits:</font></b> 
+3</font></font></p>
+<p class="MsoNormal">
+　</p>
+<ul>
+				<font size="6">
+				<li>
+				<p class="MsoNormal"><span lang="en-us"><font face="Arial">
+				<a href="../examBases.htm">(2020/06/15) Some old test problems 
+				were announced.</a>&nbsp; </font></span></p></li>
+				<li>
+				<p class="MsoNormal"><span lang="en-us"><font face="Arial">
+				(2020/06/10) Videos for the 15th class can be found in the 
+				following links. </font></span></p></li>
+</ul>
+<p class="MsoNormal"><span lang="en-us"><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://youtu.be/VcTQyTKO5dI">Module 5 on Security Testing</a>,
+<a href="https://youtu.be/NEy4h2VxSpM">Module 6</a>,
+<a href="https://youtu.be/qoWoce0nZoE">Module 7</a></font></span></p>
+		</font>
+<ul>
+				<font size="6">
+				<li>
+				<p class="MsoNormal"><span lang="en-us"><font face="Arial">
+				(2020/06/05) <font color="#FF0000">Final exam will be 
+				closed-book and administered in BL 103 from 09:10am to 12:30noon 
+				Monday 17 June 2020.&nbsp; 80% of the points of the exam will be 
+				from the problems in the textbook.&nbsp; 20% of the points of 
+				the exam will be from the source papers of your midterm 
+				presentations in this semester.&nbsp; </font> </font></span></p></li>
+				<li>
+				<p class="MsoNormal"><span lang="en-us"><font face="Arial">
+				(2020/06/03) Videos for the 14th class can be found in the 
+				following links. </font></span></p></li>
+</ul>
+<p class="MsoNormal"><span lang="en-us"><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://youtu.be/ZehdMIRs988">Module 2 on Security Testing</a>,
+<a href="https://youtu.be/uYI3Oks-46U">Module 3</a>,
+<a href="https://youtu.be/PvVqeMGO4Yw">Module 4</a></font></span></p>
+		</font>
+<ul>
+				<font size="6">
+				<li>
+				<p class="MsoNormal"><span lang="en-us"><font face="Arial">
+				(2020/05/27) The contents of
+				<a href="https://youtu.be/UZeCYfIdVC8">Module 1 on Security 
+				Testing</a> have been significantly extended. </font></span></p></li>
+				<li>
+				<p class="MsoNormal"><span lang="en-us"><font face="Arial">
+				(2020/05/27) Videos for the 13th class can be found in the 
+				following links.&nbsp; </font></span></p></li>
+</ul>
+<p class="MsoNormal"><span lang="en-us"><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://youtu.be/s61B79EVUrs">Module 5.4</a>,
+<a href="https://youtu.be/zKK6tfq-duM">Module 5.5</a>,
+<a href="https://youtu.be/UZeCYfIdVC8">Module 1 on Security Testing</a></font></span></p>
+		</font>
+<ul>
+				<font size="6">
+				<li>
+				<p class="MsoNormal"><span lang="en-us"><font face="Arial">(2020/05/20) Videos for the 12 th class can be found in the 
+				following links. </font></span></p></li>
+</ul>
+<p class="MsoNormal"><span lang="en-us"><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://youtu.be/jGxsJuUFCfU">Module 5.2</a>,
+<a href="https://youtu.be/8prfpXl7Q7E">Module 5.3</a>,
+<a href="http://cc.ee.ntu.edu.tw/~farn/courses/ST/2020.Spring/midtermPresentations.htm">
+midterm presentations</a></font></span></p>
+		</font>
+<ul>
+				<font size="6">
+				<li>
+				<p class="MsoNormal"><span lang="en-us"><font face="Arial">
+				(2020/05/13) Videos for the 11th class can be found in the 
+				following links. </font></span></p></li>
+</ul>
+<p class="MsoNormal"><span lang="en-us"><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://youtu.be/Bwgn7y33xSY">Module 4.3</a>,
+<a href="https://youtu.be/3RdBsmRx8VE">Module 5.1</a>,
+<a href="http://cc.ee.ntu.edu.tw/~farn/courses/ST/2020.Spring/midtermPresentations.htm">midterm presentations</a></font></span></p>
+		</font>
+<ul>
+				<font size="6">
+				<li>
+				<p class="MsoNormal"><span lang="en-us"><font face="Arial">
+				(2020/05/07) <a href="https://hackmd.io/HPvzNcEsR1aj2oXjp494JA">
+				Materials for the 3rd project is now available!</a></font></span></p></li>
+				<li>
+				<p class="MsoNormal"><span lang="en-us"><font face="Arial">
+				(2020/05/06) Videos for the 10th class can be found in the 
+				following links.&nbsp; </font></span></p></li>
+</ul>
+<p class="MsoNormal"><span lang="en-us"><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://youtu.be/N89usn1L4lE">Module 4.1</a>,
+<a href="https://youtu.be/GzwkNB7Il20">Module 4.2</a>,
+<a href="http://cc.ee.ntu.edu.tw/~farn/courses/ST/2020.Spring/midtermPresentations.htm">
+midterm presentations</a></font></span></p>
+		</font>
+<ul>
+				<font size="6">
+				<li>
+				<p class="MsoNormal"><span lang="en-us"><font face="Arial">
+				(2020/04/29) Videos for the 9th class can be found in the 
+				following links. </font></span></p></li>
+</ul>
+<p class="MsoNormal"><span lang="en-us"><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://youtu.be/oREoQZlmWqI">Module 3.7</a>,
+<a href="https://youtu.be/-lslElzTBYw">Module 3.8</a>,
+<a href="http://cc.ee.ntu.edu.tw/~farn/courses/ST/2020.Spring/midtermPresentations.htm">
+midterm presentations</a></font></span></p>
+		</font>
+<ul>
+				<font size="6">
+				<li>
+				<p class="MsoNormal"><span lang="en-us"><font face="Arial">(2020/04/29) <a href="https://meet.google.com/jkk-vqhg-maq">
+				Online course for the 9th class are now open and can be joined 
+				by clicking this line. </a>&nbsp;Videos will be available after 
+				the class. </font></span></p></li>
+</ul>
+<blockquote>
+	<blockquote>
+		<p class="MsoNormal"><span lang="en-us"><font face="Arial">
+		<a href="https://meet.google.com/jkk-vqhg-maq">
+		https://meet.google.com/jkk-vqhg-maq</a></font></span></p>
+		<p class="MsoNormal"><span lang="en-us"><font face="Arial">+1 
+		510-833-7358，PIN：310 037 880#</font></span></p>
+	</blockquote>
+</blockquote>
+		</font>
+<ul>
+				<font size="6">
+				<li>
+				<p class="MsoNormal"><span lang="en-us"><font face="Arial">(2020/04/22) Videos for the 8th class can be found in the 
+				following links. </font></span></p></li>
+</ul>
+<p class="MsoNormal"><span lang="en-us"><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://youtu.be/n6I49nV32Gg">Module 3.3</a>,
+<a href="https://youtu.be/n1YNtsNrXw8">Module 3.4</a>,
+<a href="https://youtu.be/bPDxwKsWpB8">Module 3.5</a>, 
+<a href="https://youtu.be/-PQ_X_BKJ_s">Module 3.6</a></font></span></p>
+		</font>
+<ul>
+				<font size="6">
+				<li>
+				<p class="MsoNormal"><span lang="en-us"><font face="Arial">
+				(2020/04/15) Videos for the 7th class can be found in the 
+				followling links. </font></span></p></li>
+</ul>
+<p class="MsoNormal"><span lang="en-us"><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://youtu.be/mqGDlWkkFz4">Module 3.1</a>,
+<a href="https://youtu.be/J3HnydZj3q0">Module 3.2</a>,
+<a href="http://cc.ee.ntu.edu.tw/~farn/courses/ST/2020.Spring/marketSurvey.htm">
+Market Survey Presentations</a></font></span></p>
+		</font>
+<ul>
+				<font size="6">
+				<li>
+				<p class="MsoNormal"><span lang="en-us"><font face="Arial">
+				<a href="https://hackmd.io/@xlYUTygoRkyuQQlwXuWDWQ/r1UU-rOL8">
+				(2020/04/13) Materials for the second project is now available!</a></font></span></p></li>
+				<li>
+				<p class="MsoNormal"><span lang="en-us"><font face="Arial">
+				(2020/04/08) Videos for the 6th class can be found in the 
+				following links. </font></span></p></li>
+</ul>
+<p class="MsoNormal"><span lang="en-us"><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://youtu.be/SdR9SCtLj7g">Module 2.10</a>,
+<a href="https://youtu.be/Q72Ytskrm8M">Module 2.11</a>,
+<a href="https://youtu.be/BKEnwkgbBBo">Module 2.12</a></font></span></p>
+		</font>
+<ul>
+				<font size="6">
+				<li>
+				<p class="MsoNormal"><span lang="en-us"><font face="Arial">
+				(2020/04/01) Videos for the 5th class can be found in the 
+				following links. </font></span></p></li>
+</ul>
+<p class="MsoNormal"><span lang="en-us"><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://youtu.be/gEApXjrT7PY">Module 2.7</a>,
+<a href="https://youtu.be/N3UMHJgj4Gw">Module 2.8</a>,
+<a href="https://youtu.be/mnEOcHcLhes">Module 2.9</a></font></span></p>
+		</font>
+<ul>
+				<font size="6">
+				<li>
+				<p class="MsoNormal"><span lang="en-us"><font face="Arial">
+				(2020/03/25) Videos for the 4th class can be found in the 
+				following links.&nbsp; </font></span></p></li>
+</ul>
+<p class="MsoNormal"><span lang="en-us"><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://youtu.be/Eerep_deXkk">Module 2.4</a>,
+<a href="https://youtu.be/NLjhNpQRONM">Module 2.5</a>,
+<a href="https://youtu.be/C2LCgKjaQqU">Module 2.6</a></font></span></p>
+		</font>
+<ul>
+				<font size="6">
+				<li>
+				<p class="MsoNormal"><span lang="en-us"><font face="Arial">
+				(2020/03/18) Videos for the 3rd class </font></span>
+				<font size="6" face="Arial">
+				<span lang="en-us">can be found in the the following links.
+				</span></font></p></li>
+</ul>
+<p class="MsoNormal"><span lang="en-us"><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://youtu.be/22g5hihrUIA">Module 1.7</a>,
+<a href="https://youtu.be/YnsYhMIjO0E">Module 2.1</a>,
+<a href="https://youtu.be/LwmDu6SYlRw">Module 2.2</a>,
+<a href="https://youtu.be/CImNCdb9mbg">Module 2.3</a></font></span></p>
+		</font>
+<ul>
+				<font size="6">
+				<li>
+				<p class="MsoNormal"><font size="6" face="Arial">
+				<span lang="en-us">(2020/03/17)
+				<a href="https://forms.gle/LX7hy2WQLnqtP9St9">Please register 
+				your GitLab repository urls for homework and project submission.
+				</a>
+				</span></font></p></li>
+				<li>
+				<p class="MsoNormal"><span lang="en-us"><font face="Arial">
+				(2020/03/17) </font></span><font size="6" face="Arial">
+				<span lang="en-us">
+				<a href="https://hackmd.io/@xlYUTygoRkyuQQlwXuWDWQ/ByaSzDCNL">
+				Project 1 materials is now available! </a>&nbsp;Due by April 8, 
+				2020.
+				</span></font></p></li>
+				<li>
+				<p class="MsoNormal"><font size="6" face="Arial">
+				<span lang="en-us">(2020/03/10)
+				<a href="https://youtu.be/VS-B5DYf4-U">Assignment for a 
+				presentation video on software testing markey survey is due on 
+				March 25, 2020</a>.
+				</span></font></p></li>
+				<li>
+				<p class="MsoNormal"><font size="6" face="Arial">
+				<span lang="en-us">(2020/03/10) Videos for the 2nd class can 
+				be viewed in the following links.
+				</span></font></p></li>
+</ul>
+<p class="MsoNormal"><span lang="en-us"><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://youtu.be/eawSV82FqqE">Module 1.4</a>,
+<a href="https://youtu.be/BQqVem9rRAk">Module 1.5</a>,
+<a href="https://youtu.be/VS-B5DYf4-U">Module 1.6 &amp; Assignment 1</a></font></span></p>
+		</font>
+<ul>
+				<font size="6">
+				<li>
+				<p class="MsoNormal"><font size="6" face="Arial">
+				<span lang="en-us">(2020/03/03) Videos for the 1st class can 
+				be viewed via the following links.
+				</span></font></p></li>
+</ul>
+<blockquote>
+	<blockquote>
+		<p class="MsoNormal"><span lang="en-us">
+		<font face="Arial">
+		<a href="https://www.youtube.com/watch?v=jOn-OxaBaNg">Syllabus</a>, <a href="https://www.youtube.com/watch?v=heG7XHqG0ik">module 
+		1.1</a>, 
+		<a href="https://www.youtube.com/watch?v=6M_zMhuM8ik">module 1.2</a>,
+		<a href="https://www.youtube.com/watch?v=w-4OPb7Hpl4">module 1.3</a>. </font></span></p>
+	</blockquote>
+</blockquote>
+		</font>
+<ul>
+				<font size="6">
+				<li>
+				<p class="MsoNormal"><font size="6" face="Arial">
+				<span lang="en-us">(2020/03/03) All course materials go online 
+				from now.&nbsp; You know why.</span></font></p></li>
+		</font><font size="6">
+				<li>
+				<p class="MsoNormal"><font size="6" face="Arial">
+				<span lang="en-us">(2018/12/06) Materials for the 3rd project 
+				have been announced and is available in
+				</span></font></p></li>
+</ul>
+<p class="MsoNormal" align="center"><span lang="en-us"><font face="Arial">
+<a href="https://hackmd.io/_00Tb-jAT8yLCwRFiFRd_Q">
+https://hackmd.io/_00Tb-jAT8yLCwRFiFRd_Q</a></font></span><font size="6" face="Arial"><span lang="en-us">
+</span></font></p>
+<ul>
+				<li>
+				<p class="MsoNormal"><font size="6" face="Calibri">
+				<span lang="en-us">(2013/12/18)
+				<a href="#line.project2">Materials for project 2 announced. </a>
+				</span></font></p></li>
+				<li>
+				<p class="MsoNormal"><font size="6" face="Calibri">(2013/10/17)
+				<a href="http://cc.ee.ntu.edu.tw/~farn/courses/ST/projects/cunit/ta.2013.chu-yu-hsu/LineEquationSolver.zip">An 
+	example CUnit project of linear equation solver is available now. </a>
+				</font></p></li>
+				<li>
+				<p class="MsoNormal"><font size="6" face="Calibri">(2013/09/27) 
+				<a href="#line.project2">2nd project on GUI testing with Selenium announced. 
+				</a></font></p></li>
+				<li>
+				<p class="MsoNormal"><font size="6" face="Calibri">(2013/09/27)
+				<a href="http://cc.ee.ntu.edu.tw/~farn/courses/ST/projects/cunit/idb/idb.example.htm">An example CUnit project of 
+	a middleware on top of a database library is available now. </a></font></p>
+				</li>
+</ul>
+<p class="MsoNormal"><b><font size="6" color="#0000FF" face="Calibri">Background: </font></b>
+</p>
+<p class="MsoNormal"><span style="font-family: Calibri"><font size="6">&nbsp;&nbsp;&nbsp; 
+As the sizes and functionalities of software keep on growing, non-trivial 
+software projects have spent more than half of their budget in testing and 
+debugging.&nbsp;&nbsp; For Taiwan's high-tech industry, the situtaion is even 
+worse since most software team managers and engineers do not think that they 
+should spend money in software testing.&nbsp; Such a mentality rooted from 
+Taiwan's industrial strength in OEM and ODM business but is now hurting Taiwan's 
+effort in brand business.&nbsp;&nbsp; With the know-how in requirement 
+engineering and system testing, Taiwan has no hope in making a successful 
+international brand in the high-tech industry.&nbsp; </font></span></p>
+<p class="MsoNormal"><span style="font-family: Calibri" lang="en-us">&nbsp;&nbsp;&nbsp; 
+Software security is a highly visible and fast-growing sector of software 
+testing.&nbsp; Not only the government has promoted and enforced security 
+regulations, most companies are willing to invest in software security.&nbsp;
+</span></p>
+<p class="MsoNormal"><font size="6" color="#0000FF">
+<span style="font-family: Calibri; font-weight: 700">Goals: </span></font></p>
+<p class="MsoNormal"><font size="6"><span style="font-family: Calibri">&nbsp;&nbsp;&nbsp;
+</span></font><span style="font-family: Calibri"><font size="6">The course aims 
+at teaching the students the background theory of software <span lang="en-us">
+quality assurance (QA)</span> and letting 
+them play with advanced testing <span lang="en-us">and security-checking </span>tools from academia and industry.&nbsp; In the 
+long-term, we anticipate to produce skillful professionals in software testing 
+business for Taiwan's high-tech industry that can do the following.&nbsp; </font>
+</span></p>
+<ul>
+	<li>
+	<p class="MsoNormal"><font size="6"><span style="font-family: Calibri">
+	Knowing the fundamentals and resources in software testing;</span></font></li>
+	<li>
+	<p class="MsoNormal"><font size="6"><span style="font-family: Calibri">
+	Utilizing the research results from academia; </span></font></li>
+	<li>
+	<p class="MsoNormal"><font size="6"><span style="font-family: Calibri">
+	Deploying software testing technology to various companies.&nbsp; </span>
+	</font></li>
+	<li>
+	<p class="MsoNormal"><span style="font-family: Calibri" lang="en-us">
+	Understanding the basic concepts and skills in security checking.&nbsp;
+	</span></li>
+</ul>
+<p class="MsoNormal"><font size="6" color="#0000FF">
+<span style="font-family: Calibri; font-weight: 700">Course planning: </span>
+</font></p>
+<p class="MsoNormal"><font size="6"><span style="font-family: Calibri">&nbsp;&nbsp;&nbsp; 
+This course will focus on the theoretical aspects of software testing.&nbsp; 
+Basic plan is listed as follows. </span></font>
+<span style="font-family: Calibri"><font size="6">&nbsp;</font></span></p>
+<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+<font face="Calibri" size="6"><span lang="EN-US">1.</span></font><span style="font-style: normal; font-variant: normal; font-weight: normal; font-family: Calibri" lang="EN-US">&nbsp;The </span><span style="font-family: Calibri">first module: 
+foundations<span lang="en-us"> (<a href="../slides/Ch1-Introduction.pdf">slides</a>)</span></span></p>
+<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+<font face="Calibri" size="6"><span lang="EN-US">2.</span></font><span style="font-style: normal; font-variant: normal; font-weight: normal; font-family: Calibri" lang="EN-US">&nbsp;The </span><span style="font-family: Calibri">second module: 
+Testing criteria</span></p>
+<p class="MsoNormal" style="text-indent: 12.0pt"><font face="Calibri" size="6">
+<span lang="EN-US">2.1 Graph testing (<a href="../slides/Ch2-GraphCoverage.pdf">slides</a>)</span></font></p>
+<p class="MsoNormal" style="text-indent: 12.0pt"><font face="Calibri" size="6">
+<span lang="EN-US">2.2 Logic testing (<a href="../slides/Ch3-LogicCoverage.pdf">slides</a>)</span></font></p>
+<p class="MsoNormal" style="text-indent: 12.0pt"><font face="Calibri" size="6">
+<span lang="EN-US">2.3 Input space testing (<a href="../slides/Ch4-ISP.pdf">slides</a>) </span></font></p>
+<p class="MsoNormal" style="text-indent: 12.0pt"><font face="Calibri" size="6">
+<span lang="EN-US">2.4 Syntax testing (<a href="../slides/Ch5-SyntaxCoverage.pdf">slides</a>) </span></font></p>
+<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+<font face="Calibri" size="6"><span lang="EN-US">3.</span></font><font size="6"><span style="font-style: normal; font-variant: normal; font-weight: normal; font-family: Calibri" lang="EN-US">&nbsp;</span><span style="font-family: Calibri" lang="en-us">T</span><span style="font-style: normal; font-variant: normal; font-weight: normal; font-family: Calibri">hird module: practical consideration. <span lang="en-us">(<a href="../slides/Ch6-practical.pdf">slides</a>)</span></span></font></p>
+<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+<font face="Calibri">
+<span lang="en-us"><span class="style2">4. Criterias for new app types (<a href="../slides/Ch7.pdf">slides</a>)</span></span></font></p>
+<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+<span class="style2"><span lang="en-us"><font face="Calibri">5. Security 
+checking overview.&nbsp; </font></span></span></p>
+<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">　</p>
+<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+<b><font face="Calibri" size="6" color="#0000FF">Pre-requisites: </font></b></p>
+<ul>
+	<li>
+	<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+	<font face="Calibri" size="6">Basic Computer Concepts, </font></li>
+	<li>
+	<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+	<font face="Calibri" size="6">C/C++ or Java programming, </font></li>
+	<li>
+	<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+	<font face="Calibri" size="6">Data-Structures, </font></li>
+	<li>
+	<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+	<font face="Calibri" size="6">Algorithms </font></li>
+</ul>
+<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+<b><font face="Calibri" size="6" color="#0000FF"><a name="line.eval">Evaluation: 
+</a> <a name="line.eval" href="https://forms.gle/LX7hy2WQLnqtP9St9">Please 
+register your GitLab url for assignment and project submission.&nbsp; </a> </font></b></p>
+<ul>
+	<li>
+		<font face="Calibri" size="6" color="#008000">Final exam (<span lang="en-us">30</span>%)</font><font face="Calibri">
+		<span lang="en-us">, Wednesday, June. 17, 2020</span></font><ul>
+		    <li>
+				<span lang="en-us"><font face="Arial" color="#FF0000">
+				Final exam will be closed-book and administered in BL 103 from 
+				09:10am to 12:30noon Wedensday 17 June 2020.&nbsp; </font></span>
+		    </li>
+			<li>
+				<span lang="en-us"><font face="Arial" color="#FF0000">
+				80% of the points of the exam will be from the problems in the 
+				textbook.&nbsp; </font></span>
+		    </li>
+			<li>
+				<span lang="en-us"><font face="Arial" color="#FF0000">
+				20% of the points of the exam will be from the source papers of 
+				your midterm presentations in this semester.&nbsp; </font></span>
+		    </li>
+		</ul>
+	</li>
+		</font>
+				<font size="4">
+	<li>
+	<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+	<font face="Calibri" size="6" color="#008000"><a name="line.midReport">
+	<span style="background-color: #FFFFFF">Mid-term report (<span lang="en-us">1</span>0%), 
+	deadline on <span lang="en-us">Nov</span>. <span lang="en-us">8</span>, 201<span lang="en-us">8</span>.</span></a></font><ul>
+		<li>
+		<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+		<font face="Calibri" size="6"><span lang="en-us">
+		<a name="line.midtermReportTemplate" href="../midtermPresentationTemplate-ST.pptx">Template of midterm reports in PPT can be downloaded here.
+		</a></span></font></li>
+		<li>
+		<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+		<font face="Calibri" size="6">must submit the topic to TA and 
+		presentation time for confirmation 
+	by <span lang="en-us">Sept</span>. <span lang="en-us">27</span>, 201<span lang="en-us">6</span>.</font></li>
+		<li>
+		<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+		<font face="Calibri" size="6">TA and the teacher may suggest changes to the 
+	topics.</font></li>
+		<li>
+		<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+		<font face="Calibri" size="6">must confirm the topics and presentation 
+		schedule by Oct. 4, 201<span lang="en-us">8</span>.</font></li>
+		<li>
+		<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+		<font face="Calibri" size="6">must turn in the report in 
+		<span lang="en-us">PowerPoint</span> format, at 
+	least <span lang="en-us">15</span> pages, to the TA via email.</font></li>
+	</font>
+				<font size="6">
+		<li>
+		<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+		<i><font color="#FF0000">
+		<font face="Calibri"><span lang="en-us">must make a presentation in 
+		front of the class for 10 mins. </span></font></li>
+		</font></i>
+	</font>
+				<li>
+		<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+		<span lang="en-us"><font color="#FF0000" size="6" face="Calibri"><i>The 
+		presentation dates can be on Nov. 8, 2018, Dec. 13, 2018, or Jan. 17, 
+		2019.&nbsp; </i></font></span><font size="4">
+		<li>
+		<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+		<font face="Calibri" size="6"><a name="line.reportEvaluation">The topic must be technologically related to 
+	one of the chapter in the textbook. </a></font>
+		<ul>
+			<li>
+			<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+			<font face="Calibri" size="6">must be related to the 
+			<span lang="en-us">Software Verification</span> technology 
+	in sotware giants, like Amazon, Facebook, Google, Microsoft, IBM, ..., etc<span lang="en-us">; 
+	OR</span></font></li>
+			<li>
+			<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+			<span lang="en-us"><font face="Calibri" size="6">a regular paper published 
+	in 
+	<a href="http://dblp.uni-trier.de/db/conf/icse/icse2018.html">ACM/IEEE ICSE 2018</a>,
+			<a href="http://dblp2.uni-trier.de/db/conf/sigsoft/fse2017.html">ACM 
+			FSE 2017</a>,
+			<a href="http://dblp.uni-trier.de/db/conf/kbse/ase2018.html">IEEE 
+			ASE 2018</a>,
+			<a href="http://dblp.uni-trier.de/db/conf/issta/issta2018.html">ACM 
+			ISSTA 2018</a>,
+	or <a href="http://dblp.uni-trier.de/db/conf/pldi/pldi2018.html">ACM PLDI 2018</a>.&nbsp;
+			</font></span></li>
+		</ul></li>
+		<li>
+		<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+		<span lang="en-us"><font face="Calibri" size="6">The report must be in 
+	English and is evaluated as follows. </font></span>
+		<ul>
+			<li>
+			<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+			<span lang="en-us"><font face="Calibri" size="6">20% on background before 
+	the work. </font></span></li>
+			<li>
+			<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+			<span lang="en-us"><font face="Calibri" size="6">20% on the motivation.
+			</font></span></li>
+			<li>
+			<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+			<span lang="en-us"><font face="Calibri" size="6">20% Techniques of the work.
+			</font></span></li>
+			<li>
+			<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+			<span lang="en-us"><font face="Calibri" size="6">20% Experiment 
+	interpretation. </font></span></li>
+			<li>
+			<p class="MsoListParagraph" style="text-indent: -18.0pt; margin-left: 18.0pt">
+			<span lang="en-us"><font face="Calibri" size="6">20% Writing.&nbsp; 
+			</font></span></li>
+		</ul></li>
+	</ul></li>
+	</font>
+				<font size="6">
+	<li><font face="Calibri" size="6" color="#008000">Projects&nbsp;
+		</font>
+	<ul>
+		<li><font face="Calibri" size="6">
+		<a name="line.project1" href="https://hackmd.io/@xlYUTygoRkyuQQlwXuWDWQ/ByaSzDCNL"><b>
+		<font color="#FF0000">Project 1</font></b> (15%): C<span lang="en-us">ontinuous 
+		testing and u</span>nit<span lang="en-us"> testing</span>, due by
+		<span lang="en-us">April</span>. <span lang="en-us">8</span>, 20<span lang="en-us">20.</span>
+		</a></font>
+		</li>
+		<li><font face="Calibri" size="6">
+		<b><font color="#FF0000">Project 2</font></b> (15%):
+				<a href="https://hackmd.io/@xlYUTygoRkyuQQlwXuWDWQ/r1UU-rOL8">GUI testing with Selenium (with Firefox on either Linux or Windows)</a></font><a href="https://hackmd.io/@xlYUTygoRkyuQQlwXuWDWQ/r1UU-rOL8"></li></a></font><a href="https://hackmd.io/@xlYUTygoRkyuQQlwXuWDWQ/r1UU-rOL8">
+		</a>
+		<font size="6">
+		<li><font face="Calibri" size="6"><b><font color="#FF0000">Project 3</font></b> (15%):
+				<a href="https://hackmd.io/HPvzNcEsR1aj2oXjp494JA">
+				<span lang="en-us">mobile and web app</span> testing</a></font></li></font>
+	</ul><ul>
+		<font size="6">
+		<li><font face="Calibri" size="6">
+		<b>
+		<font color="#FF0000">Project 4</font></b> (15%):
+				security<span lang="en-us"> check</span></font></font><font size="6"><li>
+		<font face="Calibri" size="6"><a href="../projects/sikuli/sikuli.rar">Requirement on students' presentations.
+				</a></font>
+		<ul>
+			<li><font style="font-size: 20pt" face="Calibri">One student one team.
+			</font></li></font><font style="font-size: 20pt" face="Calibri">
+			<li><span lang="en-us">Each student must present at least one 
+			project. </span></li></font><font size="6">
+			<li><font style="font-size: 20pt" face="Calibri">About 10 mins every students with PPT files.
+			</font></li>
+			<li><font style="font-size: 20pt" face="Calibri">One min about the app and its challenge to software testing<span lang="en-us">.&nbsp;
+			</span></font></li>
+				</font><font style="font-size: 20pt">
+			<li><font face="Calibri"><span lang="en-us">
+			<a href="https://docs.google.com/forms/d/e/1FAIpQLSdLoPK2yWt2tkURr4jWDaE-zkXM4tjSB0XPTr2hi8m_8To2WA/viewform?usp=pp_url">Student presentation registration page is accessible by clicking 
+			this sentence. </a></span></font></li>
+		</ul></li>
+				</font><font size="6">
+		<li><font face="Calibri" size="6" color="#0000FF">
+		<a name="line.project.eval">Project evaluation criteria: 
+				</a></font>
+		<ul>
+			<li value="1"><font style="font-size: 20pt" face="Calibri">1.  Explanation of the SUT.
+			<span lang="en-us">&nbsp; </span>(10% of total points)
+				</font>
+			<ul>
+				<li type="circle">
+				<font style="font-size: 20pt" color="#008000" face="Calibri">
+				<span lang="en-us">It is required that the students use public 
+				SUTs instead of writing tiny programs by themselves as the SUTs.&nbsp;
+				</span></font></li>
+				</font><font style="font-size: 20pt">
+			</ul></li></font><font size="6">
+			<li><font style="font-size: 20pt" face="Calibri">2.  User requirements.  (10% of totoal points)
+			</font></li>
+			<li><font style="font-size: 20pt" face="Calibri">3.  Test specification correspondence to user requirements. (10% of total points) 
+						</font></li>
+			<li><font style="font-size: 20pt" face="Calibri">4.  Test adequacy. (30% of total points) 
+				</font>
+			<ul>
+				<li type="circle">
+				<font style="font-size: 20pt" color="#008000" face="Calibri">How many (combinations of) data intervals are tested ? 
+						</font></li>
+				<li type="circle">
+				<font style="font-size: 20pt" color="#008000" face="Calibri">How many permutations of test input events are tested ?
+				</font></li>
+				</font>
+				<font style="font-size: 20pt" color="#008000" face="Calibri">
+				<li type="circle"><span lang="en-us">Whenever possible, source 
+				code coverage analysis with public tools will certainly earn you 
+				more credits.&nbsp; </span></li>
+			</ul></li></font><font size="6">
+			<li><font style="font-size: 20pt" face="Calibri">5.  Test evaluation (test oracle) ?　(10% of total points) 
+						</font>
+			<ul>
+				<li type="circle">
+				<font style="font-size: 20pt" color="#008000" face="Calibri">Purely by human decision ?   
+						</font></li>
+				<li type="circle">
+				<font style="font-size: 20pt" color="#008000" face="Calibri">By test verdicts (or as assertion) encoded in  the test scripts ?  
+						</font></li>
+				<li type="circle">
+				<font style="font-size: 20pt" color="#008000" face="Calibri">Or by a test evaluation method ?
+				</font></li>
+			</ul></li>
+			<li><font style="font-size: 20pt" face="Calibri">6. Test execution demonstration　(10% of total points)   
+						</font></li>
+			<li><font style="font-size: 20pt" face="Calibri">7.  Test execution analysis ?　(10% of total points) 
+						</font>
+			<ul>
+				<li type="circle">
+				<font style="font-size: 20pt" color="#008000" face="Calibri">How many bugs detected ?  
+				</font></li>
+				<li type="circle">
+				<font style="font-size: 20pt" color="#008000" face="Calibri">What kind of bugs detected ?
+				</font></li>
+			</ul></li>
+			<li><font style="font-size: 20pt" face="Calibri">8. Communication quality ?　(10% of total points)   
+						</font></li>
+		</ul></li>
+	</ul></li>
+</ul>
+<p class="MsoNormal"><font size="6" color="#0000FF"><b>
+<span style="font-family: Calibri">Textbook: </span></b></font></p>
+<p class="MsoNormal" align="center"><u><i><font face="Calibri" size="6">
+<span lang="EN-US"><a href="http://cs.gmu.edu/~offutt/softwaretest/">Introduction to Software Testing</a></span></font></i></u></p>
+<p class="MsoNormal" align="center"><font face="Calibri" size="6">
+<span lang="EN-US">Paul Ammann and Jeff Offutt</span></font></p>
+<p class="MsoNormal"><font face="Calibri" size="6"><span lang="EN-US">&nbsp;</span></font></p>
+<p class="MsoNormal"><font face="Calibri"><font size="6">With related course 
+materials in </font></font></p>
+<p class="MsoNormal" align="center"><font face="Calibri">
+<a style="color: blue; text-decoration: underline; text-underline: single" href="http://cs.gmu.edu/~offutt/softwaretest/">
+<font size="6"><span lang="EN-US">http://cs.gmu.edu/~offutt/softwaretest/</span></font></a></font></p>
+<p class="MsoNormal">　</p>
+
+<p><b>
+<span lang=EN-US
+     style='font-family:"Arial","sans-serif";color:#0000FF'><font size="6">
+Previous classes: </font></span></b></p>
+<blockquote>
+	<ul type="circle">
+		<li>
+		<p class="MsoListParagraph" style="font-family: Calibri; color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: left; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-indent: -18pt; margin-left: 18pt; margin-right: 0cm; margin-top: 0cm; margin-bottom: 0.0001pt">
+		<span lang="en-us" style="color: #000000">
+		<a href="http://cc.ee.ntu.edu.tw/~farn/courses/ST/2015.fall/index.htm">
+		Fall 2015</a></span></li>
+		<li>
+		<p class="MsoListParagraph" style="font-family: Calibri; color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: left; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-indent: -18pt; margin-left: 18pt; margin-right: 0cm; margin-top: 0cm; margin-bottom: 0.0001pt">
+		<a href="http://cc.ee.ntu.edu.tw/~farn/courses/ST/2014.fall/index.htm">
+		Fall 2014</a></li>
+		<li>
+		<p class="MsoListParagraph" style="font-family: Calibri; color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: left; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-indent: -18pt; margin-left: 18pt; margin-right: 0cm; margin-top: 0cm; margin-bottom: 0.0001pt">
+		<a href="http://cc.ee.ntu.edu.tw/~farn/courses/ST/2013.fall/index.htm">
+		Fall 2013</a></li>
+		<li>
+		<p class="MsoListParagraph" style="font-family: Calibri; color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: left; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-indent: -18pt; margin-left: 18pt; margin-right: 0cm; margin-top: 0cm; margin-bottom: 0.0001pt">
+		<font size="6">
+		<span lang="en-us">
+		<a href="http://cc.ee.ntu.edu.tw/~farn/courses/ST/2013.spring/index.htm">
+		Spring 2013</a></span></font></li>
+		<li>
+		<p class="MsoListParagraph" style="font-family: Calibri; color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: left; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-indent: -18pt; margin-left: 18pt; margin-right: 0cm; margin-top: 0cm; margin-bottom: 0.0001pt">
+		<span lang="en-us">
+		<a href="http://cc.ee.ntu.edu.tw/~farn/courses/ST/2018.spring/index.htm">Spring 2018</a></span></li>
+	</ul>
+</blockquote>
+<p><b>
+<span lang=EN-US
+     style='font-family:"Arial","sans-serif";color:#0000FF'><font size="6">Teaching
+     Assistant Information:</font></span></b><span lang=EN-US style='font-family:"Arial","sans-serif";color:#0000FF'><font size="6">
+</font></span><font size="6" color="#0000FF"></li>
+ </font></p>
+<blockquote>
+	<blockquote>
+		<blockquote>
+			<p><font size="6">
+			<span lang=EN-US
+      style='mso-bidi-font-size:12.0pt;font-family:"Arial","sans-serif"'>Name:&nbsp;</span><span style="font-family: 標楷體">林宇謙<img border="0" src="../../../val/2019/林宇謙/林宇謙.png" width="235" height="175" align="right"></span></font></p>
+			<p>
+			<span lang=EN-US
+      style='mso-bidi-font-size:12.0pt;font-family:"Arial","sans-serif"'>
+			<font size="6">Mail:
+      		r07943154@ntu.edu.tw</font></span></p>
+			<p>
+			<span lang=EN-US
+      style='mso-bidi-font-size:12.0pt;font-family:"Arial","sans-serif"'>
+			<font size="6">Room:
+      BL 616</font></span></p>
+			<p>
+			<span lang=EN-US
+      style='mso-bidi-font-size:12.0pt;font-family:"Arial","sans-serif"'>
+			<font size="6">Office
+      Hour: </font></span></p>
+		</blockquote>
+	</blockquote>
+	<p>
+	　</p>
+</blockquote>
+<p><b><span lang="en-us"><font face="Arial,sans-serif" color="#0000FF">Course 
+schedule: </font></span></b></p>
+<blockquote>
+<div align="center">
+	<table border="1" width="69%" id="table1">
+		<tr>
+			<td width="69">
+			<p align="center">1. </td>
+			<td width="118">
+			<p align="center"><span lang="en-us">3</span>/<span lang="en-us">4</span></td>
+			<td><span style="font-family: 標楷體; color: black"><font size="4">
+			課程簡介、第一章</font></span></td>
+		</tr>
+		<tr>
+			<td width="69" align="center">2. </td>
+			<td width="118" align="center">3/11</td>
+			<td><span style="font-family: 標楷體; color: black"><font size="4">第一章、</font></span></td>
+		</tr>
+		<tr>
+			<td width="69" align="center">3. </td>
+			<td width="118" align="center">3/<span lang="en-us">18</span></td>
+			<td>
+			<p style="margin-top: 0; margin-bottom: 0"><span style="font-family: 標楷體; color: black"><font size="4">
+			第一</font></span><font size="6"><span style="font-family: 標楷體; color: black"><font size="4">章</font></span></font><font size="4"><span style="font-family: Calibri">、</span></font><span style="font-family: Calibri; color: black"><font size="4">email</font></span><span style="font-family: 標楷體; color: black"><font size="4">期中報告提案題目給助教
+			與報告志願順序</font></span><font size="4"><span style="font-family: 標楷體; color: black">、</span></font></p>
+			<p style="margin-top: 0; margin-bottom: 0"><font size="4">
+			<span style="font-family: 標楷體; color: black">第一階段學期計畫介紹：</span><span style="font-family: Calibri; color: black; font-style:italic">Unit testing</span></font></td>
+		</tr>
+		<tr>
+			<td width="69" align="center">4. </td>
+			<td width="118" align="center">3/25</td>
+			<td>
+			<p style="margin-top: 0; margin-bottom: 0"><span style="font-family: 標楷體; color: black"><font size="4">
+			第二</font></span><font size="6"><span style="font-family: 標楷體; color: black"><font size="4">章 
+			、</font></span></font><span style="font-family: 標楷體; color: black"><font size="4">確認期中報告提案題目
+			與報告順序</font></span></p></td>
+		</tr>
+		<tr>
+			<td width="69" align="center">5.</td>
+			<td width="118" align="center">4/1</td>
+			<td>
+			<div style="language:zh-TW;line-height:90%;margin-top:6.72pt;margin-bottom:
+0pt;margin-left:.67in;text-indent:-.67in;text-align:left;direction:ltr;
+unicode-bidi:embed;vertical-align:baseline;mso-line-break-override:none;
+punctuation-wrap:hanging">
+				<p style="line-height: 100%; margin-top:0; margin-bottom:0">
+				<font size="4"><span style="font-family: 標楷體">第二章</span></font></div>
+			</td>
+		</tr>
+		<tr>
+			<td width="69" align="center">6. </td>
+			<td width="118" align="center">4/8</td>
+			<td><font size="6">
+				<p style="line-height: 100%; margin-top:0; margin-bottom:0">
+				<span style="font-family: 標楷體; color: black"><font size="4">第二章、</font></span><font size="4"><span style="font-family: 標楷體">繳交第一階段學期計畫報告 
+			、第二階段學期計畫介紹：</span></font><span lang="en-us"><font size="4"><span style="font-family: Calibri; font-style: italic">web-testing
+			</span></font></span></td>
+		</tr>
+		<tr>
+			<td width="69" align="center">7.</td>
+			<td width="118" align="center">4/15</td>
+			<td><font size="4"><span style="font-family: 標楷體; color: black">第三</span></font><font size="6"><span style="font-family: 標楷體; color: black"><font size="4">章</font></span></td>
+		</tr>
+		<tr>
+			<td width="69" align="center">8.</td>
+			<td width="118" align="center">4/22</td>
+			<td><span style="font-family: 標楷體; color: black"><font size="4">第三</font></span><font size="6"><span style="font-family: 標楷體; color: black"><font size="4">章
+			、</font></span><font face="標楷體" size="4">繳交期中報告</font></font><font face="標楷體" size="4">與10分鐘報告影片</font></td>
+		</tr>
+		<tr>
+			<td width="69" align="center">9.</td>
+			<td width="118" align="center">4/29</td>
+			<td>
+			<p style="margin-top: 0; margin-bottom: 0"><font size="4">
+			<span style="font-family: 標楷體">第三</span></font><font size="6"><span style="font-family: 標楷體; color: black"><font size="4">章</font></span><font size="4"><span style="font-family: 標楷體">、</span></font></p></td>
+		</tr>
+		<tr>
+			<td width="69" align="center">10.</td>
+			<td width="118" align="center">5/6</td>
+			<td>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="標楷體" size="4">第四章</font></td>
+		</tr>
+		<tr>
+			<td width="69" align="center">11.</td>
+			<td width="118" align="center">5/13</td>
+			<td><span style="font-family: 標楷體; color: black"><font size="4">
+			第四</font></span><font size="6"><span style="font-family: 標楷體; color: black"><font size="4">章</font></span><font size="4"><span style="font-family: 標楷體; color: black">、繳交第二階段學期計畫報告、第三階段學期計畫介紹：</span><span style="font-family: Calibri" lang="en-us">mobile 
+			app testing</span></font></td>
+		</tr>
+		<tr>
+			<td width="69" align="center">12.</td>
+			<td width="118" align="center">5<span lang="en-us">/</span>20</td>
+			<td>
+			<p style="margin-top: 0; margin-bottom: 0"><span style="font-family: 標楷體; color: black"><font size="4">第四</font></span><font size="6"><span style="font-family: 標楷體; color: black"><font size="4">章</font></span></font></p></td>
+		</tr>
+		<tr>
+			<td width="69" align="center">13.</td>
+			<td width="118" align="center">5/<span lang="en-us">27</span></td>
+			<td>
+			<div style="language:zh-TW;line-height:90%;margin-top:6.72pt;margin-bottom:
+0pt;margin-left:.67in;text-indent:-.67in;text-align:left;direction:ltr;
+unicode-bidi:embed;vertical-align:baseline;mso-line-break-override:none;
+punctuation-wrap:hanging">
+				<p style="line-height: 100%; margin-top:0; margin-bottom:0">
+				<span style="font-family: 標楷體; color: black"><font size="4">第五</font></span><font size="6"><span style="font-family: 標楷體; color: black"><font size="4">章</font></span></div></td>
+		</tr>
+		<tr>
+			<td width="69" align="center">14.</td>
+			<td width="118" align="center"><span lang="en-us">6</span>/<span lang="en-us">3</span></td>
+			<td><font size="4"><span style="font-family: 標楷體">資安檢測補充教材</span></font><font size="6"><font size="4"><span style="font-family: 標楷體"><span style="font-family: 標楷體; color: black">、繳交第三階段學期計畫報告
+			、第四階段學計劃：資安檢測</span></span></font></td>
+		</tr>
+		<tr>
+			<td width="69" align="center">15.</td>
+			<td width="118" align="center"><span lang="en-us">6</span>/<span lang="en-us">10</span></td>
+			<td><font size="4"><span style="font-family: 標楷體">資安檢測補充教材</span></font></td>
+		</tr>
+		<tr>
+			<td width="69" align="center">16.</td>
+			<td width="118" align="center"><span lang="en-us">6</span>/<span lang="en-us">17</span></td>
+			<td><font size="4"><span style="font-family: 標楷體">期末考</span></font></td>
+		</tr>
+		<tr>
+			<td width="69" align="center">16.</td>
+			<td width="118" align="center"><span lang="en-us">6</span>/<span lang="en-us">24</span></td>
+			<td>
+			<font size="4">
+			<span style="font-family: 標楷體; color: black">繳交第四階段學期計畫報告</span></font></td>
+		</tr>
+		</table>
+	</div>
+	<p>
+	　</p>
+</blockquote>
+
+</body>
+
+</html>

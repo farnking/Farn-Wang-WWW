@@ -1,0 +1,495 @@
+Pthreads:APIPthread: Basic Routines
+Function: pthread_create()
+#include <pthread.h>
+
+int pthread_create(pthread_t * thread, const pthread_attr_t * attr,
+	void * (*start_routine)(void *), void * arg);
+The pthread_create() routine creates a new thread within a process. The new 
+thread starts in the start routine start_routine which has a start argument arg. 
+The new thread has attributes specified with attr, or default attributes if attr 
+is NULL. 
+If the pthread_create() routine succeeds it will return 0 and put the new thread 
+id into thread, otherwise an error number shall be returned indicating the 
+error. 
+ERRORS
+  EAGAIN The process lacks the resources to create another thread, or the total 
+  number of threads in a process would exceed PTHREAD_THREADS_MAX. 
+  EINVAL A value specified by attr is invalid. 
+SEE ALSO
+  pthread_exit(), pthread_join() 
+Function: pthread_equal()
+#include <pthread.h>
+
+int pthread_equal(pthread_t thread_1, pthread_t thread_2);
+The pthread_equal() routine compares the thread ids thread_1 and thread_2 and 
+returns a non 0 value if the ids represent the same thread otherwise 0 is 
+returned. 
+SEE ALSO
+  pthread_create(), pthread_self() 
+Function: pthread_exit()
+#include <pthread.h>
+
+void pthread_exit(void * status);
+The pthread_exit() routine terminates the currently running thread and makes 
+status available to the thread that successfully joins, pthread_join(), with the 
+terminating thread. In addition pthread_exit() executes any remaining cleanup 
+handlers in the reverse order they were pushed, pthread_cleanup_push(), after 
+which all appropriate thread specific destructors are called. 
+An implicit call to pthread_exit() is made if any thread, other than the thread 
+in which main() was first called, returns from the start routine specified in 
+pthread_create(). The return value takes the place of status. 
+The process exits as if exit() was called with a status of 0 if the terminating 
+thread is the last thread in the process. 
+The pthread_exit() routine cannot return. 
+SEE ALSO
+  pthreadkey_create(), pthread_cleanup_push(), pthread_create(), pthread_join() 
+Function: pthread_join()
+#include <pthread.h>
+
+int pthread_join(pthread_t thread, void ** status);
+If the target thread thread is not detached and there are no other threads 
+joined with the specified thread then the pthread_join() function suspends 
+execution of the current thread and waits for the target thread thread to 
+terminate. Otherwise the results are undefined. 
+On a successful call pthread_join() will return 0, and if status is non NULL 
+then status will point to the status argument of pthread_exit(). On failure 
+pthread_join() will return an error number indicating the error. 
+ERRORS
+  EINVAL The value specified by the thread is not a valid thread. 
+  ESRCH The specified thread thread is already detached. 
+  EDEADLK The join would result in a deadlock or the value of thread specifies 
+  the calling thread. 
+SEE ALSO
+  pthread_attr_getdetachstate(), pthread_attr_setdetachstate(), 
+  pthread_detach(), pthread_exit() 
+Function: pthread_self()
+#include <pthread.h>
+
+pthread_t pthread_self(void);
+The pthread_self() routine returns the thread id of the calling thread. 
+SEE ALSO
+  pthread_create(), pthread_equal() 
+Pthread: Synchronization Routines
+Function: pthread_mutex_init()
+#include <pthread.h>
+
+int pthread_mutex_init(pthread_mutex_t * mutex,
+	const pthread_mutex_attr *attr);
+The pthread_mutex_init() routine creates a new mutex, with attributes specified 
+with attr, or default attributes if attr is NULL. 
+If the pthread_mutex_init() routine succeeds it will return 0 and put the new 
+mutex id into mutex, otherwise an error number shall be returned indicating the 
+error. 
+ERRORS
+  EINVAL A value specified by attr is not a valid attribute.
+  ENOMEM The process lacks the memory to create another mutex. 
+  EAGAIN The process lacks the resources, other than memory, to create another 
+  mutex. 
+SEE ALSO
+  pthread_mutex_destroy(), 
+Function: pthread_mutex_destroy()
+#include <pthread.h>
+
+int pthread_mutex_destroy(pthread_mutex_t * mutex);
+The pthread_mutex_destroy() routine destroys the mutex specified by mutex. 
+If the pthread_mutex_destroy() routine succeeds it will return 0, otherwise an 
+error number shall be returned indicating the error. 
+ERRORS
+  EINVAL The value specified by mutex is not a valid mutex. 
+  EBUSY An attempt to destroy the mutex specified by mutex is locked or 
+  referenced by another thread. 
+SEE ALSO
+  pthread_mutex_init(), 
+Function: pthread_mutex_lock()
+#include <pthread.h>
+
+int pthread_mutex_lock(pthread_mutex_t * mutex);
+The pthread_mutex_lock() routine shall lock the mutex specified by mutex. If the 
+mutex is already locked the calling thread blocks until the mutex becomes 
+available. 
+If the pthread_mutex_lock() routine succeeds it will return 0, otherwise an 
+error number shall be returned indicating the error. 
+ERRORS
+  EINVAL The value specified by mutex is not a valid mutex. 
+  EDEADLK A deadlock condition would occure if the thread blocked waiting for 
+  the mutex. 
+SEE ALSO
+  pthread_mutex_init(), pthread_mutex_unlock(), pthread_mutex_trylock(), 
+Function: pthread_mutex_trylock()
+#include <pthread.h>
+
+int pthread_mutex_trylock(pthread_mutex_t * mutex);
+The pthread_mutex_trylock() routine shall lock the mutex specified by mutex and 
+return 0, otherwise an error number shall be returned indicating the error. In 
+all cases the pthread_mutex_trylock() routine will not block the current running 
+thread. 
+ERRORS
+  EBUSY The mutex specified by mutex is already locked. 
+  EINVAL The value specified by mutex is not a valid mutex. 
+  EDEADLK A deadlock condition would occure if the thread blocked waiting for 
+  the mutex. 
+SEE ALSO
+  pthread_mutex_init(), pthread_mutex_lock(), 
+Function: pthread_mutex_unlock()
+#include <pthread.h>
+
+int pthread_mutex_unlock(pthread_mutex_t * mutex);
+If the current thread is the owner of the mutex specifed by mutex, then the 
+pthread_mutex_unlock() routine shall unlock the mutex. If there are any threads 
+blocked waiting for the mutex, the the scheduler will determine which thread 
+obtains the lock on the mutex, otherwise the mutex is available to the next 
+thread that calls the routine pthread_mutex_lock(), or pthread_mutex_trylock(). 
+If the pthread_mutex_unlock() routine succeeds it will return 0, otherwise an 
+error number shall be returned indicating the error. 
+ERRORS
+  EINVAL The value specified by mutex is not a valid mutex. 
+  EPERM The current thread does not own the mutex specified by mutex.
+SEE ALSO
+  pthread_mutex_init(), pthread_mutex_lock(), 
+Function: pthread_cond_init()
+#include <pthread.h>
+
+int pthread_cond_init(pthread_cond_t * cond,
+	const pthread_cond_attr *attr);
+The pthread_cond_init() routine creates a new condition variable, with 
+attributes specified with attr, or default attributes if attr is NULL. 
+If the pthread_cond_init() routine succeeds it will return 0 and put the new 
+condition variable id into cond, otherwise an error number shall be returned 
+indicating the error. 
+ERRORS
+  EINVAL A value specified by attr is not a valid attribute.
+  ENOMEM The process lacks the memory to create another condition variable. 
+  EAGAIN The process lacks the resources, other than memory, to create another 
+  condition variable. 
+SEE ALSO
+  pthread_cond_destroy(), 
+Function: pthread_cond_destroy()
+#include <pthread.h>
+
+int pthread_cond_destroy(pthread_cond_t * cond);
+The pthread_cond_destroy() routine destroys the condition variable specified by 
+cond. 
+If the pthread_cond_destroy() routine succeeds it will return 0, otherwise an 
+error number shall be returned indicating the error. 
+ERRORS
+  EINVAL The value specified by cond is not a valid condition variable. 
+  EBUSY An attempt to destroy the condition variables specified by cond is 
+  locked or referenced by another thread. 
+SEE ALSO
+  pthread_cond_init(), 
+Function: pthread_cond_wait()
+#include <pthread.h>
+
+int pthread_cond_wait(pthread_cond_t * cond, pthread_mutex_t * mutex);
+The pthread_cond_wait() routine atomically blocks the current thread waiting on 
+condition variable specified by cond, and unlocks the mutex specified by mutex. 
+The waiting thread unblocks only after another thread calls 
+pthread_cond_signal(), or pthread_cond_broadcast() with the same condition 
+variable, and the current thread reaquires the lock on the mutex. 
+If the pthread_cond_wait() routine succeeds it will return 0, and the mutex 
+specified by mutex will be locked and owned by the current thread, otherwise an 
+error number shall be returned indicating the error. 
+ERRORS
+  EINVAL The value specified by cond is not a valid condition variable, or the 
+  value specified by mutex is not a valid mutex, or the mutex is not locked and 
+  owned by the current thread. 
+SEE ALSO
+  pthread_cond_init(), pthread_cond_signal(), pthread_cond_timedwait(), 
+  pthread_cond_broadcast(), 
+Function: pthread_cond_timedwait()
+#include <pthread.h>
+
+int pthread_cond_timedwait(pthread_cond_t * cond, pthread_mutex_t * mutex,
+    const struct timespec * abstime);
+The pthread_cond_timedwait() routine blocks in the same manner as 
+pthread_cond_wait(). The waiting thread unblocks for the same conditions and 
+returns 0, or if the system time reaches or exceedes the time specified by 
+abstime, in which case ETIMEDOUT will be returned. In any case the thread will 
+reaquire the mutex specified by mutex. 
+ERRORS
+  EINVAL The value specified by cond is not a valid condition variable, or the 
+  value specified by mutex is not a valid mutex, or the mutex is not locked and 
+  owned by the current thread. 
+  ETIMEDOUT The system time has reached or exceeded the time specified by 
+  abstime. 
+SEE ALSO
+  pthread_cond_init(), pthread_cond_wait(), pthread_cond_signal(), 
+  pthread_cond_broadcast(), 
+Function: pthread_cond_signal()
+#include <pthread.h>
+
+int pthread_cond_signal(pthread_cond_t * cond);
+The pthread_cond_signal() routine unblocks ONE thread blocked waiting for the 
+condition variable specified by cond. The scheduler will determine which thread 
+will be unblocked. 
+If the pthread_cond_signal() routine succeeds it will return 0, otherwise an 
+error number shall be returned indicating the error. 
+ERRORS
+  EINVAL The value specified by cond is not a valid condition variable. 
+SEE ALSO
+  pthread_cond_init(), pthread_cond_wait(), pthread_cond_timedwait(), 
+  pthread_cond_broadcast(), 
+Function: pthread_cond_broadcast()
+#include <pthread.h>
+
+int pthread_cond_broadcast(pthread_cond_t * cond);
+The pthread_cond_broadcast() routine unblocks ALL threads blocked waiting for 
+the condition variable specified by cond. 
+If the pthread_cond_broadcast() routine succeeds it will return 0, otherwise an 
+error number shall be returned indicating the error. 
+ERRORS
+  EINVAL The value specified by cond is not a valid condition variable. 
+SEE ALSO
+  pthread_cond_init(), pthread_cond_wait(), pthread_cond_timedwait(), 
+  pthread_cond_signal(), 
+Function: pthread_once()
+#include <pthread.h>
+
+pthread_once_t once_init = PTHREAD_ONCE_INIT;
+
+int pthread_once(pthread_once_t * once_init, void (*init_routine)(void)));
+The pthread_once() routine will ensure that the routine init_routine() is called 
+only once from pthread_once for all invocations of pthread_once() with once_init 
+and init_routine(). 
+Upon completion the routine init_routine() will have completed once. The 
+behavior of pthread_once() is undefined if once_init is automatic, not 
+originally set to PTHREAD_ONCE_INIT, or is modified after pthread_once() is 
+called. 
+SEE ALSO
+  pthread_mutex_init(), pthread_mutex_lock(), 
+Pthread: Thread-Specific Data Routines
+Pthread: Cleanup Handlers
+Function: pthread_key_create()
+#include <pthread.h>
+
+int pthread_key_create(pthread_key_t * key, void (* dest_routine(void *)));
+The pthread_key_create() routine creates a new key within a process visible to 
+all threads. This key can be used with the pthread_setspecific() and 
+pthread_getspecific() routines to save and retrieve data associated with the 
+saving and retrieving thread. In addition the new key associates a routine 
+dest_routine that if it isn't NULL then at thread exit is called if the data 
+associated with the key for the exiting thread is also not NULL. 
+Upon key creation the value associated with the key for all threads is NULL, and 
+upon thread creation the value associated with all keys for that thread is NULL. 
+
+If the pthread_key_create() routine succeeds it will return 0, and put the new 
+key id into key, otherwise an error number shall be returned indicating the 
+error. 
+ERRORS
+  EAGAIN The process lacks the resources to create another key, or the total 
+  number of keys in a process would exceed PTHREAD_KEYS_MAX. 
+  ENOMEM The process lacks the memory to create another key. 
+  EINVAL The value specified by cond is not a valid condition variable. 
+SEE ALSO
+  pthread_setspecific(), pthread_getspecific(), pthread_key_delete(), 
+  pthread_create(), pthread_exit(), 
+Function: pthread_key_delete()
+#include <pthread.h>
+
+int pthread_key_delete(pthread_key_t key);
+The pthread_key_delete() routine destroys the key specified by key. If the 
+pthread_key_delete() routine succeeds it will return 0, otherwise an error 
+number shall be returned indicating the error. 
+ERRORS
+  EINVAL The value specified by key is not a valid key. 
+  EBUSY The key specified by key currently has non NULL data associated with it 
+  for some thread. 
+SEE ALSO
+  pthread_key_create(), 
+Function: pthread_setspecific()
+#include <pthread.h>
+
+int pthread_setspecific(pthread_key_t key, const void * pointer);
+The pthread_setspecific() associates the pointer pointer with the specified key 
+key. Each thread may store a separate pointer for a given key. A thread is 
+assumed to have data associated with a key if the pointer saved is not NULL. If 
+the pthread_setspecific() routine succeeds it will return 0, otherwise an error 
+number shall be returned indicating the error. 
+ERRORS
+  ENOMEM The process lacks the memory to associate the pointer pointer with the 
+  specifid key. 
+  EINVAL The value specified by key is not a valid key. 
+SEE ALSO
+  pthread_key_create(), pthread_getspecific(), 
+Function: pthread_getspecific()
+#include <pthread.h>
+
+void * pthread_getspecific(pthread_key_t key);
+If the pthread_getspecific() routine succeeds it will return the pointer stored 
+by the most recent call to pthread_setspecific() and by the current thread. This 
+value may be NULL which is indistinguishable from an error condition.
+SEE ALSO
+  pthread_key_create(), pthread_setspecific(), 
+Function: pthread_cleanup_push()
+#include <pthread.h>
+
+void pthread_cleanup_push(void (*routine)(void *), void *routine_arg);
+If the pthread_cleanup_push() routine succeeds it will push the function routine 
+with argument routine_arg onto the current threads stack of cleanup handlers. 
+These handlers will be called in reverse order when the current thread dies 
+either by calling pthread_exit() or by being the target of a pthread_cancel() 
+call. If the pthread_cleanup_push() fails no error is reported. 
+SEE ALSO
+  pthread_cleanup_pop(), pthread_cancel(), pthread_exit(). 
+Function: pthread_cleanup_pop()
+#include <pthread.h>
+
+void pthread_cleanup_pop(int execute);
+The pthread_cleanup_pop() routine pops the top cleanup handler routine off of 
+the current threads cleanup handler stack and, if there is one, it executes the 
+cleanup handler if execute is non zero. If the pthread_cleanup_pop() fails no 
+error is reported. 
+SEE ALSO
+  pthread_cleanup_push(), pthread_exit(). 
+Pthread: Thread Attribute Routines
+Function: pthread_attr_init()
+#include <pthread.h>
+
+int pthread_attr_init(pthread_attr_t *attr);
+The pthread_attr_init() routine creates and initializes an attribute variable 
+for the use with pthread_create(). If the pthread_attr_init() routine succeeds 
+it will return 0 and put the new attribute variable id into attr, otherwise an 
+error number shall be returned indicating the error. 
+SEE ALSO
+  pthread_attr_destroy(), pthread_create() 
+Function: pthread_attr_destroy()
+#include <pthread.h>
+
+int pthread_attr_destroy(pthread_attr_t *attr);
+The pthread_attr_destroy() routine destroys the pthread attribute variable 
+specified by attr. 
+If the pthread_attr_destroy() routine succeeds it will return 0, otherwise an 
+error number shall be returned indicating the error. 
+ERRORS
+  EINVAL The value specified by attr is not a valid pthread attribute variable. 
+SEE ALSO
+  pthread_attr_init(), 
+Function: pthread_attr_getstacksize()
+#include <pthread.h>
+
+int pthread_attr_getstacksize(pthread_attr_t *attr, size_t * stacksize);
+The pthread_attr_getstacksize() routine gets the stacksize attribute from the 
+pthreads attributes variable specified by attr and puts it in stacksize. 
+If the pthread_attr_getstacksize() routine succeeds it will return 0, otherwise 
+an error number shall be returned indicating the error. 
+SEE ALSO
+  pthread_attr_setstacksize(), pthread_attr_getstackaddr(), pthread_attr_init(), 
+
+Function: pthread_attr_setstacksize()
+#include <pthread.h>
+
+int pthread_attr_setstacksize(pthread_attr_t *attr, size_t stacksize);
+The pthread_attr_setstacksize() routine sets the stacksize attribute to the 
+value specified by stacksize for all threads created with attributes attr. 
+If the pthread_attr_setstacksize() routine succeeds it will return 0, otherwise 
+an error number shall be returned indicating the error. 
+ERRORS
+  EINVAL The value specified by stacksize is less than PTHREAD_STACK_MIN or 
+  exceeds the maximum stack size for the system. 
+SEE ALSO
+  pthread_attr_getstacksize(), pthread_attr_setstackaddr(), pthread_attr_init(), 
+
+Function: pthread_attr_getdetachstate()
+#include <pthread.h>
+
+int pthread_attr_getdetachstate(const pthread_attr_t *attr, int *state);
+The pthread_attr_getdetachstate() routine gets the detach state attribute from 
+the pthreads attributes variable specified by attr and puts it in state. 
+If the pthread_attr_getdetachstate() routine succeeds it will return 0 and state 
+will be set to either PTHREAD_CREATE_DETACHED or PTHREAD_CREATE_JOINABLE, 
+otherwise an error number shall be returned indicating the error. 
+ERRORS
+  EINVAL The value specified by attr is not a valid pthread attribute variable. 
+SEE ALSO
+  pthread_attr_setdetachstate(), pthread_attr_init(), pthread_detach(), 
+  pthread_join(), 
+Function: pthread_attr_setdetachstate()
+#include <pthread.h>
+
+int pthread_attr_setdetachstate(pthread_attr_t *attr, int state);
+The pthread_attr_setdetachstate() routine sets the detach attribute to the value 
+specified by state for all threads created with attributes attr. The value of 
+state must be either PTHREAD_CREATE_DETACHED or PTHREAD_CREATE_JOINABLE. 
+If the pthread_attr_setdetachstate() routine succeeds it will return 0, 
+otherwise an error number shall be returned indicating the error. 
+ERRORS
+  EINVAL The value specified by attr is not a valid pthread attribute variable. 
+  EINVAL The value specified by state is not valid. 
+SEE ALSO
+  pthread_attr_getdetachstate(), pthread_attr_init(), pthread_detach(), 
+  pthread_join(), 
+Pthread: Sidio Routines
+Function: flockfile()
+#include <stdio.h>
+
+void flockfile(FILE * file);
+If the stream specified by file is unlocked, the flockfile() routine shall lock 
+the stream, set the lock owner to the current thread, and set the lock count to 
+one. If the stream is already locked by the current thread then flockfile() will 
+just increment the lock count otherwise the calling thread blocks until the 
+stream become available. 
+SEE ALSO
+  funlockfile(), ftrylockfile(), 
+Function: ftrylockfile()
+#include <stdio.h>
+
+int ftrylockfile(FILE * file);
+The ftrylockfile() routine is a non blocking version of the flockfile() routine. 
+flockfile() If the stream specified by file is unlocked, the ftrylockfile() 
+routine shall lock the stream, set the lock owner to the current thread, set the 
+lock count to one, and return 0. If the stream is already locked by the current 
+thread then ftrylockfile() will just increment the lock count and also return 0, 
+otherwise the routine will return 1. In all cases the flockfile() routine will 
+not block the current running thread. 
+SEE ALSO
+  flockfile(), funlockfile(), 
+Function: funlockfile()
+#include <stdio.h>
+
+void funlockfile(FILE * file);
+If the stream specified by file is locked by the current running thread, the 
+funlockfile() decrements the lock count. If the lock count reaches zero, the 
+stream is unlocked, and if there are any threads blocked waiting for the stream, 
+the the scheduler will determine which thread obtains the lock, otherwise the 
+stream is available to the next thread that calls the routine flockfile(), or 
+ftrylockfile(). 
+SEE ALSO
+  flockfile(), ftrylockfile(), 
+Function: getc_unlocked()
+Function: getchar_unlocked()
+Function: putc_unlocked()
+Function: putc_unlocked()
+#include <stdio.h>
+
+int getc_unlocked(FILE * file);
+
+int getchar_unlocked(void);
+
+int putc_unlocked(int c, FILE * file);
+
+int putchar_unlocked(int c);
+These routines except for NOT being reentrant are functionally equivalent to the 
+respective reentrant functions getc(), getchar(), putc(), and putchar(). 
+SEE ALSO
+  flockfile(), funlockfile(), ftrylockfile(), 
+Pthread: Constants
+PTHREAD_THREADS_MAX
+PTHREAD_KEYS_MAX
+PTHREAD_STACK_MIN
+PTHREAD_CREATE_DETACHED
+PTHREAD_CREATE_JOINABLE
+Pthread: Non POSIX Routines
+Function: pthread_detach()
+#include <pthread.h>
+
+int pthread_detach(pthread_t thread);
+The pthread_detach() routine detaches the thread thread which indicates to the 
+system that the it needs no special cleanup at thread termination. 
+ERRORS
+  EINVAL A value specified by the thread is not a valid thread. 
+  ESRCH The specified thread thread is already detached. 
+SEE ALSO
+  pthread_attr_getdetachstate(), pthread_attr_setdetachstate(), pthread_join(), 
+  pthread_exit() 
+_________________________ 
+Christopher Angelo Provenzano, proven@mit.edu 

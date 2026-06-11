@@ -1,0 +1,10 @@
+1. Test Default page:
+	a. One textbox is provided for user input.
+	b. One button for user to starts a search query.
+	c. One button for the link to Doodle page.
+
+2.Test Search page:
+	List the result of user's query.
+
+3.Test Doodle page:
+	List the doodles Google used.

@@ -1,0 +1,9 @@
+SUT:
+www.google.com, a website providing search engine feature and a doodle link
+
+System Requirements:
+
+One textbox and two buttons are given.
+After user keys text in the textbox and click the search button, this page will shows results of searching.
+If user clicks the "Good Luck" button, it will links to the doodle history pages
+

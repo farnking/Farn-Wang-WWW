@@ -1,0 +1,239 @@
+<html> <head>
+<title>CS 243 Midterm Solutions, Winter 2001</title>
+</head>
+
+<body>
+<h1>Winter 2001 Midterm Solutions</h1>
+
+<h2>Problem 1: True/False</h2>
+<b>(a)</b> (3 points) If a node n<sub>1</sub> dominates a node
+n<sub>2</sub>, then n<sub>1</sub> is always visited before n<sub>2</sub>
+in a depth-first search.<br>
+<i>TRUE.  By the definition of domination, all paths that lead to
+n<sub>2</sub> go through n<sub>1</sub> first.  So, a depth-first search
+must reach n<sub>1</sub> first.</i>
+<br><center><b>- OR -</b></center><br>
+<i>FALSE. A post-order depth-first search visits all children of a
+node before visiting the node itself.  By the definition of domination,
+n<sub>2</sub> must be visited first, since it is a child.</i>
+<p>
+<b>(b)</b> (3 points) If a node n<sub>1</sub> dominates a node
+n<sub>2</sub>, n<sub>1</sub> is always visited before n<sub>2</sub> in a
+reverse post ordering.<br>
+<i>TRUE.  Justification is essentially identical to the "False" answer
+for 1(a) -- if a post-ordering must list n<sub>2</sub> first, then a
+reverse post-ordering must list n<sub>1</sub> first.</i>
+<p>
+<b>(c)</b> (3 points) Given a monotone data flow framework, had all the
+interior points of the data flow solver been initialized with the "bottom"
+of the semi-lattice, the answer at every point in every program would have
+been "bottom."<br>
+<i>FALSE.  Even though any element met with bottom is itself bottom, this
+makes no assumption about the results of the transfer function.  Suppose
+the transfer function returns a single constant value (not bottom).  This
+is definitely monotone (no matter the values of x and y, f(x) &le; f(y)),
+and the values once the solution stabilizes will definitely not all be
+bottom.</i>
+<p>
+<b>(d)</b> (4 points) Given a machine with 5 registers, Chaitin's register
+coloring algorithm (the one presented in class) will succeed in coloring
+any program that has no more than 4 active live ranges at any point in the
+program.<br>
+<i>FALSE.  Unfortunately, the number of live ranges at any given point has
+nothing to do with the interference graph.  Consider the following set of
+merged live ranges:</i>
+<center><tt><table border = 1>
+<tr>
+<td>#</td> <td>A</td> <td>B</td> <td>C</td> <td>D</td> <td>E</td> <td>F</td>
+</tr>
+<tr>
+<td>1</td> <td>X</td> <td>X</td> <td>X</td> <td>X</td> <td></td> <td></td>
+</tr>
+<tr>
+<td>2</td> <td>X</td> <td>X</td> <td></td> <td>X</td> <td>X</td> <td></td>
+</tr>
+<tr>
+<td>3</td> <td>X</td> <td></td> <td></td> <td>X</td> <td>X</td> <td>X</td>
+</tr>
+<tr>
+<td>4</td> <td></td> <td></td> <td></td> <td>X</td> <td>X</td> <td>X</td>
+</tr>
+<tr>
+<td>5</td> <td></td> <td></td> <td>X</td> <td></td> <td>X</td> <td>X</td>
+</tr>
+<tr>
+<td>6</td> <td></td> <td>X</td> <td>X</td> <td></td> <td></td> <td>X</td>
+</tr>
+<tr>
+<td>7</td> <td>X</td> <td>X</td> <td>X</td> <td></td> <td></td> <td></td>
+</tr>
+</table></tt></center>
+<br><i>This graph only has four live ranges at any given point, but every
+variable interferes with every other one, and so this cannot be 5-colored.</i>
+<p><hr><p>
+<h2>Problem 2: Dominators, loops, and reducibility</h2>
+<p><b>(a)</b> (3 points) Show the dominator tree for this flowgraph.
+<br>
+<i>1 dominates everything, 2 dominates everything but 1, and nothing else
+dominates anything but itself.  The dominator tree looks like this:</i> <pre>
+               1
+               |
+               2
+               |
+          +-+-+++-+-+
+          3 4 5 6 7 8
+</pre>
+
+
+<p><b>(b)</b> (2 points) What are the back edges of this flowgraph?
+<br>
+<i>The back edges are 4->1 and 6->2.</i> 
+
+<p><b>(c)</b> (4 points) Find the natural loop associated with each of the
+back edges.
+<br><i>4->1: {1 2 3 4 6}<br>6->2: {2 3 4 6}</i>
+
+<p><b>(d)</b> (3 points) Is the flow graph reducible?
+<br><i>No.  The edge 7->5 is a retreating edge that is not a back edge.
+The graph is not reducible.</i>
+
+<p><hr><p>
+
+<h2>Problem 3: Optimization</h2>
+
+We were looking for the following sets of optimizations.  Some of these
+are mutually exclusive.
+
+<ul>
+<li>Constant propagation.  No expressions may be <i>removed</i>, but we
+must at least note that <tt>g</tt> is 10 at the bottom of the loop.  If we
+actually do the substitutions, we'll get to do some common subexpression
+elimination later, as well.
+
+<li><i>(8 pts)</i> Loop invariants.  <tt>w = a+b</tt> could be hoisted out
+of the loop, since both <tt>a</tt> and <tt>b</tt> are defined outside of
+the loop.  <tt>g = 10</tt> and <tt>x = 15</tt> can <i>not</i>, since they
+do not dominate the exit.  <i>(If you transformed the while loop into a
+repeat loop, then you </i>could<i> hoist those assignments.  This is
+fine.)</i> <tt>c = f()</tt> cannot be hoisted because it may have side
+effects (like a <tt>printf()</tt> command or some such).
+
+<li><i>(6 pts)</i> Strength reduction.  The basic induction variable is
+<tt>d</tt>, which has derived variables <tt>j</tt> and <tt>e</tt> <i>(g is
+a loop invariant, recall)</i>.  Variables <tt>j'</tt> and <tt>e'</tt>
+should be introduced, and <i>they should only be updated when the basic
+induction variable, <tt>d</tt>, is updated.  <b>Nothing</b> happens to
+<tt>j'</tt> or <tt>e'</tt> at the location of the command <tt>j = d +
+2</tt>.</i>
+
+<li><i>(2 pts)</i> Induction variable elimination.  After strength
+reduction, none of the induction variables compute anything other than
+their own values.  We may move <tt>d</tt> out of the loop, adding a
+statement <tt>d = j'-2</tt> after leaving the loop.  <i>(Actually, since
+<tt>j</tt> also doesn't compute anything inside the loop, and its
+assignment dominates the exit, we may kick it out too; however, this was
+not required.  <tt>e</tt> may not be kicked out because its assignment
+does not dominate the loop exit, so <tt>e</tt> may preserve its original
+value by the time of loop exit.)</i>
+
+<li><i>(4 pts)</i> Miscellaneous.  If you actually folded the constants
+into the expressions, then the expression <tt>10 * c</tt> became
+targetable by common subexpression elimination.  Or, one could have
+hoisted very busy expressions and hoisted <tt>10 * c</tt> or <tt>g *
+c</tt> up above the <tt>g = 10</tt> branch.  Or, one could be
+exceptionally tricky and perform partial redunancy elimination and
+pre-compute <tt>g * c</tt> on each branch in the loop.
+
+</ul>
+<p><hr><p>
+
+<h2>Problem 4: Dataflow analysis</h2>
+
+<p>For simplicity assume one statement per basic block.  Composition is
+trivial.  Once the dataflow problems have been solved, printing of the
+Warnings is done using the content of the block and the result of the
+analysis at the block.</p>
+
+<h3>I. Lock -> Lock</h3>
+Note that warning I is emitted on the second LOCK.
+
+<ul>
+<li>Forward
+<li>{NoLock, Lock}
+<li>NoLock -> Lock
+<li>All points (including boundary) are NoLock.
+<li>Transfer function = Lock if stmt is LOCK; NoLock if stmt is UNLOCK;
+    and simply propagates the input if the stmt is something else.
+<li>Monotone, Distributive, and convergent (monotone & finite descending
+    chains).
+</ul>
+
+Issue Warning I on any LOCK stmt that has an in value of Lock.
+
+<h3>II. Unlock -> Unlock</h3>
+Warning II, like warning I, is emitted on the second instruction.  The
+problem is very similar to I:
+
+<ul>
+<li>Forward
+<li>{NoUnlock, Unlock}
+<li>NoUnlock -> Unlock
+<li>All points (including boundary) are NoUnlock.
+<li>Transfer function = Unlock if stmt is UNLOCK; NoUnlock if stmt is LOCK;
+    and simply propagates the input if the stmt is something else.
+<li>Monotone, Distributive, and convergent (monotone & finite descending
+    chains).
+</ul>
+
+Issue Warning II on any UNLOCK stmt whose in statement is Unlock.
+
+<h3>III. Lock -> exit</h3>
+
+The question asks you to issue a warning "on a LOCK operation if..." .
+Thus it has to either be a backward problem, or it has to be a forward
+problem that tags each LOCK statement and treats them like reaching
+definitions (issuing the warning if any LOCK operation reaches the exit
+block).
+
+<ul>
+<li>Backward
+<li>{Exits, CannotExit}
+<li>CannotExit -> Exits
+<li>Interior points are CannotExit.
+<li>in[exit] is Exits.
+<li>Transfer function = CannotExit if the stmt is LOCK or UNLOCK and
+    propagates its output otherwise.
+<li>Monotone, Distributive, and convergent (monotone & finite descending
+    chains).
+</ul>
+
+Issue Warning III on any LOCK statement whose OUT value is Exits.
+
+<h3>IV. entry -> Unlock</h3>
+
+This is very similar to Warning III, except that it runs forward. 
+
+<ul>
+<li>Forward
+<li>{Enters, CannotEnter}
+<li>CannotEnter -> Enters
+<li>Interior points are CannotEnter.
+<li>out[entry] is Enters.
+<li>Transfer function = CannotEnter if the stmt is LOCK or UNLOCK and
+    propagates its input otherwise.
+<li>Monotone, Distributive, and convergent (monotone & finite descending
+    chains).
+</ul>
+
+Issue Warning IV on any UNLOCK statement whose IN value is Enters.
+
+<h2>Wow!  That's massively inefficient!</h2>
+
+Well, yes.  We can actually combine the analyses for warnings I, II, and
+IV (our lattice now contains the power set of {Enters, Lock, Unlock},
+with union as our meet operator) and the analysis functions pretty much as
+stated before.  However, Warning III still requires either a backwards
+analysis, or a forward analysis of an entirely different nature.  You'll
+need at least two lattices to do it right.
+
+</body> </html>

@@ -1,0 +1,15 @@
+1. Test Lin2dSolution constructor:
+	A Lin2dSolution should indicate a problem has unique solution, infinitely many solution or no solution.
+	Test for initialization of Lin2dSolution.
+
+2. Test Lin2dSolution Equality
+	Test for equality of Lin2dSolution.
+
+3. Test Lin2dSolver::Solve if there's a unique solution
+	Given two linear equations, which of them should be solved as a unique point
+
+4. Test Lin2dSolver::Solve if there's infinitely many solutions
+	Given two linear equations, which of them should be solved as infinitely many solutions
+
+5. Test Lin2dSolver::Solve if there's no solution
+	Given two linear equations, which of them should be solved as no solution

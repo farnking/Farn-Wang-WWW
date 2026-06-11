@@ -1,0 +1,13 @@
+class:
+
+Lin2dSolution: indicates the solution is valid or not.
+	if it is valid, the member attributes x, y are valid.
+
+Lin2dSolver:
+	contains a static function "Solve" which actually solves the problem.
+	case 1 unique solution:
+		return a valid Lin2dSolution
+	case 2 infinitely many solutions:
+		throw exception "CramerInfiniteSolution"
+	case 3 No solution:
+		throw exception "CramerNoSolution"

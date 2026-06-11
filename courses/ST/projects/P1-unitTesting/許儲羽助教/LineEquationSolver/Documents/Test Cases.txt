@@ -1,0 +1,33 @@
+1. Test Lin2dSolution constructor:
+	a. {x = 0.0, y = 0.0, isValid = false} as the initial state of Lin2dSolution 
+	   If true, well constructed.
+
+	b. input: i = {x = 1.0, y = 2.0, isValid = true}, as the argments for constructor
+	    If result instance r == i, well constucted. 
+
+2. Test Lin2dSolution Equality
+	a. Input: two identical Lin2dSolution instance, i and j. 
+	   Output: (i == j) == true.
+	
+	b. Input: two different Lin2dSolution instance, i and j. 
+	   Output: (i != j) == true.
+
+	Equality functions well.
+
+3. Test Lin2dSolver::Solve if there's a unique solution
+	Input: a = 2, b = 8, e = 16, c = 4, d = -8, f = 2; // 2x + 8y = 16; 4x -8y = 2
+	Output: {x = 3; y = 1.25; isValid = true}
+
+	Solver can indicate the problem as unique solution;
+
+4. Test Lin2dSolver::Solve if there's infinitely many solutions
+	Input: a = 2, b = 8, e = 16, c = 4, d = -8, f = 2; // 2x + 8y = 16; 4x -8y = 20
+	Output: {x = 0; y = 0; isValid = true}
+
+	Solver can indicate the problem as infinitely many solutions;
+
+5. Test Lin2dSolver::Solve if there's no solution
+	Input: a = 2, b = 8, e = 16, c = 4, d = -8, f = 2; // 2x + 8y = 16; 4x -8y = 20
+	Output: {x = 0; y = 0; isValid = false}
+
+	Solver can indicate the problem as no solution;

@@ -1,0 +1,17 @@
+1. Check Default page title:
+	links to www.google.com, titles should be "Google"
+
+2. Check Search Box Exists:
+	Input box exists in the page. 
+
+3. Check Search Boutton Exists:
+	Search button exists in the page. 
+
+4. Check GoodLuck Button Exists:
+	Doodle link button exists in the page.
+
+5. Check Search Results:
+	Result page contains the text of user's input
+
+6. Link To Doodle page:
+	After "Goodluck" button is clicked, page will go to the doodle page

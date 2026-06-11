@@ -1,0 +1,8 @@
+Default page:
+One textbox and two buttons are given.
+
+Search result pare:
+provides the result of user's query.
+
+Doodle page:
+Lists the doodles Google used.

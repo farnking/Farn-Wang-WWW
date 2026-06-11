@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body
+{
+	 font-family:Helvetica;
+	 font-size: 120%
+}
+</style>
+</head>
+<body>
+<h2>Example: GUI testing with Selenium</h2>
+SUT
+<ul><li>a web page for user registration</li></ul>
+SUT Requirement
+<ol>
+<li>Existed username can not be used to register.</li>
+<li>All fields in the application form should be filled in.</li>
+</ol>
+Test Requirement
+<ol>
+<li>The "check the username" button should act normally (when clicked, tells the user the name is legal or not.)</li>
+<li>When the submit button is clicked, all fields have to be filled in (including the Term-of-Service checkbok), or a pop-up alert will be displayed.</li>
+</ol>
+Test suite
+<ol>
+<li><a href="website-registration-tc1.html">website-registration-tc1.html<a></li>
+<li><a href="website-registration-tc2.html">website-registration-tc2.html<a></li>
+</ol>
+<a href="execuition-result.png">Execution Result</a>
+</body>
+</html>

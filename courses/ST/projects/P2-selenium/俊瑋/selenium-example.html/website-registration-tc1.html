@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.pchome.com.tw/" />
+<title>website-registration-tc1</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">website-registration-tc1</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=div.coordinatebox</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=登入</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=b</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=userName</td>
+	<td>李大仁</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=fyear</td>
+	<td>1988</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=fmon</td>
+	<td>8</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=fday</td>
+	<td>8</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=pchomeId</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=checkPchomeId</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=#atmessage &gt; div &gt; div</td>
+	<td>很抱歉！test 已有會員註冊使用過，請選擇其他帳號。</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=pchomeId</td>
+	<td>tester</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=checkPchomeId</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=#atmessage &gt; div &gt; div</td>
+	<td>很抱歉！tester 已有會員註冊使用過，請選擇其他帳號。</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=pchomeId</td>
+	<td>ntutester123</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=checkPchomeId</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=span.t16c</td>
+	<td>恭禧您！ntutester123 可以使用。</td>
+</tr>
+</tbody></table>
+</body>
+</html>
